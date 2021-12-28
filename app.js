@@ -2,12 +2,14 @@ const API_KEY = "87eae80801d542f3848a76c8eed5a462";
 const url = `https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2`
 const mediaQuery = '(max-width: 1024px)';
 
-
 document.addEventListener('DOMContentLoaded', () => {
     addNavBarBurgerItems();
     addPageNav();
     addFilterMenuButtonListener();
-    addFilterButtonsListener();
+    addFilterButtonsListeners();
+    document.getElementById("searchButton").addEventListener("click", ()=>{
+        getFilterValues();
+    })
 });
 
 function addNavBarBurgerItems(){
@@ -83,7 +85,7 @@ function addFilterMenuButtonListener(){
     });
 }
 
-function addFilterButtonsListener(){
+function addFilterButtonsListeners(){
     let restrictions = document.getElementById("filterRestrictions");
     let diets = document.getElementById("filterDiets");
     let cuisines = document.getElementById("filterCuisines");
@@ -103,4 +105,32 @@ function addFilterButtonsListener(){
         diets.style.display = "none";
         cuisines.style.display = "block";
     });
+}
+
+function getFilterValues(){
+    let healthArr = [];
+    let mealArr = [];
+    let cuisineArr = [];
+
+    let checkedItems = document.querySelectorAll('input[type=checkbox]:checked');
+    checkedItems.forEach(item =>{
+        if(item.classList.contains("restrictions")){
+            healthArr.push(item.ariaLabel);
+        }else if(item.classList.contains("meals")){
+            mealArr.push(item.ariaLabel);
+        }else if(item.classList.contains("cuisines")){
+            cuisineArr.push(item.ariaLabel);
+        }
+    })
+
+    console.log(healthArr);
+    console.log(mealArr);
+    console.log(cuisineArr);
+
+    return{
+        healthArr,
+        mealArr,
+        cuisineArr
+    };
+
 }
