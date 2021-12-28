@@ -1,0 +1,135 @@
+html body{
+
+    padding-top: 2%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-bottom: 3%;
+
+    font-family: 'Adamina', serif;
+}
+
+.logoText{
+    font-family: 'Vidaloka', serif;
+    font-size: xx-large;
+    margin: .5em;
+}
+
+.page{
+    height: 100%;
+    width: 100%;
+    position:relative;
+    padding:0;
+    margin:0;
+}
+
+#HomePage{
+    display: block;
+}
+
+#RecipesPage{
+    display: none;
+}
+
+#MenuPage{
+    display: none;
+}
+
+#searchDiv{
+    width: 50%;
+}
+
+#searchButtonDiv{
+    padding-left: 0;
+}
+
+#searchButton{
+    width: 76%;
+    height: 100%;
+    border-radius: 2em;
+    border: 0;
+    margin-left: 5%;
+    background-color: rgb(90, 119, 216);
+    color: rgb(255, 236, 236);
+
+    font-family: 'Adamina', serif;
+    font-size: medium;
+    text-align: center;
+}
+
+#searchButton:hover{
+    background-color: rgb(35, 42, 133);
+}
+
+#filterButton{
+    border: 0;
+    background-color: transparent;
+    font-family: 'Adamina', serif;
+    font-size: medium;
+}
+
+#filterButton:hover{
+    color:rgb(90, 119, 216);
+}
+
+#filterSelection{
+    text-align: center;
+    display: inline-block;
+}
+
+.dropdown-menu2 {
+    width: 10em;
+    list-style: none;
+    margin: 0;
+    margin-top: 8px;
+    padding-right: 8px;
+    position: absolute;
+    float: left;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .3s linear;
+    background-color: white;
+}
+    
+.open {
+    max-height: 300px;
+    height: auto;
+    z-index: 100;
+    transition: all .3s linear;
+}
+
+.down-caret {
+    transform: rotate(0deg);
+    transition: all .25s ease-in;
+    padding-right: 4px;
+}
+  
+.open-caret {
+    transform: rotate(180deg);
+    transition: all .25s ease-out;
+    padding-right: 4px;
+}
+
+.filterItem{
+    text-align: right;
+}
+
+#expandedFilter{
+    width: 80%;
+}
+
+.checkItem > input{
+    margin-right: 5px;
+}
+
+
+
+#filterRestrictions{
+    display: none;
+}
+#filterDiets{
+    display: none;
+}
+
+#filterCuisines{
+    display: none;
+}
