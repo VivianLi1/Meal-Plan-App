@@ -124,10 +124,6 @@ function getFilterValues(){
         }
     })
 
-    console.log(healthArr);
-    console.log(mealArr);
-    console.log(cuisineArr);
-
     return{
         healthArr,
         mealArr,
@@ -143,18 +139,25 @@ function generateURL(){
     let cuisineArr = filteredArrs.cuisineArr;
     let queryText = document.getElementById("searchText").value;
 
-    let url = `https://api.edamam.com/api/recipes/v2?app_id=${APP_ID}&type=public&imageSize=REGULAR&
-               health=${healthArr}&mealType=${mealArr}&cuisineType=${cuisineArr}&q=${queryText}`
+    let url = `https://secure-anchorage-65790.herokuapp.com/https://api.edamam.com/api/recipes/v2?app_key=${APP_KEY}&app_id=${APP_ID}&type=public&imageSize=REGULAR&q=${queryText}`
+    url = addFilterToURL(url, healthArr, "health");
+    url = addFilterToURL(url, mealArr, "mealType");
+    url = addFilterToURL(url, cuisineArr, "cuisineType");
+
+    return url;
+}
+
+function addFilterToURL(url, arr, filterType){
+    arr.forEach(item =>{
+        url+=`&${filterType}=${item}`
+    })
+
     return url;
 }
 
 function getRecipes(){
     fetch(generateURL(), {
         method: 'GET',
-        headers: {
-            "app_key": APP_KEY,
-            "Access-Control-Allow-Origin": "*"
-        }
     })
     .then(response => response.json())
     .then(data => console.log(data));
