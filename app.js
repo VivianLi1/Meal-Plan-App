@@ -1,5 +1,6 @@
-const API_KEY = "87eae80801d542f3848a76c8eed5a462";
-const url = `https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2`
+const APP_KEY = "4eb0f6bbfbecb2a6875d5652e7f76a48";
+const APP_ID = "f4b3de52";
+
 const mediaQuery = '(max-width: 1024px)';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addFilterMenuButtonListener();
     addFilterButtonsListeners();
     document.getElementById("searchButton").addEventListener("click", ()=>{
-        getFilterValues();
+        getRecipes();
     })
 });
 
@@ -133,4 +134,28 @@ function getFilterValues(){
         cuisineArr
     };
 
+}
+
+function generateURL(){
+    const filteredArrs = getFilterValues();
+    let healthArr = filteredArrs.healthArr;
+    let mealArr = filteredArrs.mealArr;
+    let cuisineArr = filteredArrs.cuisineArr;
+    let queryText = document.getElementById("searchText").value;
+
+    let url = `https://api.edamam.com/api/recipes/v2?app_id=${APP_ID}&type=public&imageSize=REGULAR&
+               health=${healthArr}&mealType=${mealArr}&cuisineType=${cuisineArr}&q=${queryText}`
+    return url;
+}
+
+function getRecipes(){
+    fetch(generateURL(), {
+        method: 'GET',
+        headers: {
+            "app_key": APP_KEY,
+            "Access-Control-Allow-Origin": "*"
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
 }
