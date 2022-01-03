@@ -121,8 +121,6 @@ html body{
     margin-right: 5px;
 }
 
-
-
 #filterRestrictions{
     display: none;
 }
@@ -133,3 +131,50 @@ html body{
 #filterCuisines{
     display: none;
 }
+
+.recipe:hover{
+    background-color: rgba(90, 119, 216, 0.253);
+}
+
+.modalButton{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 60px;
+    padding-right: 60px;
+    border-radius: 2em;
+    background-color: rgb(90, 119, 216);
+    color: white;
+    text-decoration: none;
+    font-size: small;
+}
+
+.modalButton:hover{
+    background-color: rgb(35, 42, 133);
+    color: white;
+}
+
+.centerAbsDiv{
+    position: absolute;
+    left: 8.5%; 
+}
+
+.myRecipeDiv{
+    width: 100%; 
+    height: 600px; 
+    background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('./images/d92f1e2e6e0ea21c0c6fef29f07ac68a-l.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 10px; 
+    color:white;
+    padding: 20px;
+    position: relative;
+    margin-top: 12%;
+}
+
+@media only screen and (max-width: 1024px){
+    #searchDiv{
+        width: 80%;
+    }
+}
+

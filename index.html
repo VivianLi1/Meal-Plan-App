@@ -12,7 +12,8 @@
     <!------------------ Stylesheets -------------------->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <script src="https://kit.fontawesome.com/9027e42d8e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+
     <!-------------------- Fonts ------------------------>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +24,7 @@
 <body>
     <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#HomePage" id="homeButton">
+            <a class="navbar-item" id="homeButton">
                 <img src="images/logo.png" alt="eat in: meal planning made simple" class="logoImg">
                 <h1 class="logoText">eat in</h1>
             </a>
@@ -35,9 +36,9 @@
         </div>
         <div id="navbarMainContent" class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item" href="#RecipesPage" id="recipesButton">my recipes</a>
+                <a class="navbar-item" id="recipesButton">my recipes</a>
                 <p class="navbar-item" id="slash">/</p>
-                <a class="navbar-item" href="#MenuPage" id="menuButton">my menu</a>
+                <a class="navbar-item" id="menuButton">my menu</a>
             </div>
         </div>
     </nav>
@@ -45,7 +46,7 @@
         <br>
         <section class="page" id="HomePage">
             <div class="container" id="searchDiv">
-                <div class="columns">
+                <div class="columns is-mobile">
                     <div class="column is-four-fifths">
                         <div class="control has-icons-left has-icons-right">
                             <input class="input is-rounded" type="text" placeholder="search for recipes or ingredients" id="searchText">
@@ -164,20 +165,70 @@
                         </div> 
                     </div>  
                 </div>
-
             </div>
+
+            <br>
+            <div id="resultsDiv">
+                <div class="columns">
+                    <div class="column is-one-third" id="recipeCol1"></div>
+                    <div class="column is-one-third" id="recipeCol2"></div>
+                    <div class="column is-one-third" id="recipeCol3"></div>
+                </div>
+                <div class="container" id="loadMore" style="text-align: center; display: none;">
+                    <a><p>load more</p></a>
+                </div>
+                
+            </div>
+
         </section>
 
         <section class="page" id="RecipesPage">
-            2
+            <!--<h1 style="text-align: center;">my recipes</h1>-->
+            <div id="myRecipeHolder" style="text-align: center; margin-top: 10%;">no recipes yet :(</div>
+            <div class="columns">         
+                <div class="column is-one-third" id="myRecipeCol1"></div>
+                <div class="column is-one-third" id="myRecipeCol2"></div>
+                <div class="column is-one-third" id="myRecipeCol3"></div>
+            </div>
+            
         </section>
 
         <section class="page" id="MenuPage">
             3
         </section>
+
+        <div class="modal modal-fx-3dFlipVertical" id="recipeModal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <div class="box" id="recipeModalContent" style="padding: 40px;">
+                    <div class="columns is-mobile">
+                        <div class="column is-one-third">
+                            <img id="currRecipeImg" style="border-radius: 5px;">
+                        </div>
+                        <div class="column is-two-thirds" style="position: relative;">
+                            <h1 id="currRecipeName" style="font-size: 18px;"></h1>
+                            <div style="position: absolute; bottom: 10%; color: rgba(0, 0, 0, 0.678);">
+                                <p><span id="currRecipeCals"></span> kcal/serving</p>
+                                <p id="currRecipeCuisine"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="currRecipeIngredients"></div>
+                    <br><br>
+                    <div style="display:flex; text-align: center; justify-content: space-evenly;">
+                        <a class="modalButton" id="recipeURLButton" rel="noopener noreferrer" target="_blank">view full recipe</a>
+                        <a class="modalButton" id="addToMyRecipesButton">add to my recipes</a>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
    
 
     <!------------------ Scripts -------------------->
     <script src="app.js"></script>
+    <script src="https://kit.fontawesome.com/9027e42d8e.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
+
 </body>
 </html>
