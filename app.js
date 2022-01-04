@@ -12,22 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
     addPageNav();
     addFilterMenuButtonListener();
     addFilterButtonsListeners();
-    document.getElementById("searchButton").addEventListener("click", ()=>{
-        closeFilters();
-        document.getElementById("loader").style.display = "flex";
-        document.getElementById("loadMore").style.display = "none";
 
-        document.getElementById("recipeCol1").innerText = "";
-        document.getElementById("recipeCol2").innerText = "";
-        document.getElementById("recipeCol3").innerText = "";
-        currRecipeCol = 1;
-        fetchedRecipes = [];
-        OFFSET = 0;
-        getRecipes(generateURL());
-    })
+    document.getElementById("searchButton").onclick = ()=>{
+        
+        if(document.getElementById("searchText").value != ""){
+
+            closeFilters();
+            document.getElementById("loader").style.display = "flex";
+            document.getElementById("loadMore").style.display = "none";
+            document.getElementById("noResults").style.display = "none";
+
+            document.getElementById("recipeCol1").innerText = "";
+            document.getElementById("recipeCol2").innerText = "";
+            document.getElementById("recipeCol3").innerText = "";
+            currRecipeCol = 1;
+            fetchedRecipes = [];
+            OFFSET = 0;
+            getRecipes(generateURL());
+        }
+        
+    }
     //testRecipes();
 });
 
+// page load transition (fade)
 window.transitionToPage = function(href) {
     document.querySelector('body').style.opacity = 0
     setTimeout(function() { 
@@ -35,6 +43,7 @@ window.transitionToPage = function(href) {
     }, 700)
 }
 
+//add menu items for burger menu (when window resized)
 function addNavBarBurgerItems(){
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
   
@@ -69,6 +78,7 @@ function addNavBarBurgerItems(){
     }
 }
 
+//displays each section
 function addPageNav(){
     let home = document.getElementById("HomePage");
     let recipes = document.getElementById("RecipesPage");
@@ -109,6 +119,7 @@ function addFilterMenuButtonListener(){
     });
 }
 
+//displays filters
 function addFilterButtonsListeners(){
     let restrictions = document.getElementById("filterRestrictions");
     let diets = document.getElementById("filterDiets");
@@ -196,38 +207,42 @@ function getRecipes(url){
 
         let currRecipes = data.hits;
         fetchedRecipes = fetchedRecipes.concat(currRecipes);
-        console.log(data.count);
 
-        currRecipes.map((recipe, index) =>{
-            recipe = recipe.recipe;
-
-            let name = recipe.label;
-            let cuisineType = recipe.cuisineType;
-            let calPerServing = Math.floor(recipe.calories/recipe.yield);
-            let ingredients = recipe.ingredientLines;
-            let imageURL = recipe.images.REGULAR.url;
-            let recipeURL = recipe.url;
-
-            let recipeDiv = displayRecipe(name, calPerServing, imageURL, currRecipeCol);
-            recipeDiv.addEventListener("click", ()=>{
-                populateModalContent(imageURL, name, calPerServing, cuisineType, ingredients, recipeURL, index+OFFSET);
-            });
-
-            currRecipeCol = incCol(currRecipeCol);
-
-        });
-
-        let loadMoreButton = document.getElementById("loadMore");
-        if(data._links.hasOwnProperty("next")){ 
-            loadMoreButton.style.display = "block";
-            loadMoreButton.addEventListener("click", () =>{
-                OFFSET += 20;
-                getRecipes(data._links.next.href);
-            });
+        if(data.count == 0){
+            document.getElementById("noResults").style.display = "flex";
         }else{
-            loadMoreButton.style.display = "none";
+
+            currRecipes.map((recipe, index) =>{
+                recipe = recipe.recipe;
+
+                let name = recipe.label;
+                let cuisineType = recipe.cuisineType;
+                let calPerServing = Math.floor(recipe.calories/recipe.yield);
+                let ingredients = recipe.ingredientLines;
+                let imageURL = recipe.images.REGULAR.url;
+                let recipeURL = recipe.url;
+
+                let recipeDiv = displayRecipe(name, calPerServing, imageURL, currRecipeCol);
+                recipeDiv.addEventListener("click", ()=>{
+                    populateModalContent(imageURL, name, calPerServing, cuisineType, ingredients, recipeURL, index+OFFSET);
+                });
+
+                currRecipeCol = incCol(currRecipeCol);
+
+            });
+
+            let loadMoreButton = document.getElementById("loadMore");
+            if(data._links.hasOwnProperty("next")){ 
+                loadMoreButton.style.display = "block";
+                loadMoreButton.addEventListener("click", () =>{
+                    OFFSET += 20;
+                    getRecipes(data._links.next.href);
+                });
+            }else{
+                loadMoreButton.style.display = "none";
+            }
         }
-    })
+    });
 }
 
 function testRecipes(){
