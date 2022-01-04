@@ -398,13 +398,14 @@ function displayMyRecipe(name, calPerServing, imageURL, cuisineType, ingredients
         ingredientDiv.appendChild(ingredientElement);
     });
 
+    let buttonOuterDiv = document.createElement("div");
+    buttonOuterDiv.className = "centerAbsDiv";
     let buttonDiv = document.createElement("div");
-    buttonDiv.className = "centerAbsDiv";
-    buttonDiv.style.bottom = "5%";
+    buttonDiv.className = "centerContent";
+    buttonOuterDiv.appendChild(buttonDiv);
     let fullRecipeButton = document.createElement("a");
     fullRecipeButton.innerText = "view full recipe";
     fullRecipeButton.className = "modalButton";
-    fullRecipeButton.style.marginRight = "30px";
     let addToMenuButton = document.createElement("a");
     addToMenuButton.innerText = "add to my menu";
     addToMenuButton.className = "modalButton";
@@ -415,7 +416,7 @@ function displayMyRecipe(name, calPerServing, imageURL, cuisineType, ingredients
     myRecipeDivHeader.appendChild(myRecipeInfoDiv);
     myRecipeDiv.appendChild(myRecipeDivHeader);
     myRecipeDiv.appendChild(ingredientDiv);
-    myRecipeDiv.appendChild(buttonDiv);
+    myRecipeDiv.appendChild(buttonOuterDiv);
     document.getElementById(`myRecipeCol${currRecipeCol}`).appendChild(myRecipeDiv);
 
     fullRecipeButton.rel = "noopener noreferrer";
@@ -423,14 +424,53 @@ function displayMyRecipe(name, calPerServing, imageURL, cuisineType, ingredients
     fullRecipeButton.href = recipeURL;
 
     addToMenuButton.onclick = () => {
-        addToMyMenu();
+        document.getElementById("addToMenuModal").classList.toggle("is-active");
+        document.getElementById("addToMenuButton").onclick = () =>{
+            let day = document.getElementById("dayOption").value;
+            displayMyMenuRecipe(imageURL, name, calPerServing, recipeURL, day);
+            updateTotalCal(day, calPerServing);
+            document.getElementById("addToMenuModal").classList.toggle("is-active");
+        }
+
     }
 
     return myRecipeDiv;
-
 }
 
-function addToMyMenu(){
+function displayMyMenuRecipe(imageURL, name, calPerServing, recipeURL, day){
+    let dayRow = document.getElementById(`${day}Div`);
 
+    let recipeDiv = document.createElement("a");
+    recipeDiv.style.display = "flex";
+    recipeDiv.style.marginBottom = "2%";
+    recipeDiv.style.textDecoration = "none";
+
+    let recipeImg = document.createElement("img");
+    recipeImg.src = imageURL;
+    recipeImg.className = "myMenuRecipeImg";
+
+    let infoDiv = document.createElement("div");
+    infoDiv.style.position = "relative";
+    let nameNode = document.createElement("p");
+    nameNode.innerText = name;
+    let calNode = document.createElement("p");
+    calNode.innerText = calPerServing + " kcal/serving";
+    calNode.className = "myMenuCal";
+    infoDiv.appendChild(nameNode);
+    infoDiv.appendChild(calNode);
+
+    recipeDiv.appendChild(recipeImg);
+    recipeDiv.appendChild(infoDiv);
+    dayRow.appendChild(recipeDiv);
+
+    recipeDiv.onclick = () =>{
+        recipeDiv.href = recipeURL;
+        recipeDiv.rel = "noopener noreferrer";
+        recipeDiv.target = "_blank";
+    }
 }
 
+function updateTotalCal(day, recipeCal){
+    let currCal = document.getElementById(`${day}TotalCals`).innerText;
+    document.getElementById(`${day}TotalCals`).innerText = Number(currCal) + recipeCal;
+}

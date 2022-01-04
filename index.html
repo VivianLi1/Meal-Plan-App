@@ -60,21 +60,21 @@
                     </div>
                 </div>
 
-                <div class="columns">
-                    <div class="column is-2">
-                        <p class="checkItem"><input class="meals" type="checkbox" aria-label="Breakfast"><span>breakfast</span></p>
-                    </div>
-                    <div class="column is-2">
-                        <p class="checkItem"><input class="meals" type="checkbox" aria-label="Lunch"><span>lunch</span></p>
-                    </div>
-                    <div class="column is-2">
-                        <p class="checkItem"><input class="meals" type="checkbox" aria-label="Dinner"><span>dinner</span></p>
-                    </div>
-                    <div class="column is-2">
-                        <p class="checkItem"><input class="meals" type="checkbox" aria-label="Snack"><span>snack</span></p>
-                    </div>
-                    <div class="column is-1"></div>
-                    <div class="column is-3" id="filterSelection">
+                <div style="display: flex; justify-content: space-between;">
+                    
+                    <p class="checkItem"><input class="meals" type="checkbox" aria-label="Breakfast"><span>breakfast</span></p>
+                    
+                    
+                    <p class="checkItem"><input class="meals" type="checkbox" aria-label="Lunch"><span>lunch</span></p>
+                    
+                    
+                    <p class="checkItem"><input class="meals" type="checkbox" aria-label="Dinner"><span>dinner</span></p>
+                    
+                    
+                    <p class="checkItem"><input class="meals" type="checkbox" aria-label="Snack"><span>snack</span></p>
+                    
+                    
+                    <div>
                         <button id="filterButton">
                             <i class="fas fa-chevron-down down-caret"></i>
                             <span id="currFilterSelection">more filters</span>
@@ -85,8 +85,9 @@
                             <li class="filterItem" id="filterCuisinesButton"><a>cuisines</a></li>
                         </ul>
                     </div>
+                    
                 </div>
-
+                <br>
                 <div id="filterRestrictions">
                     <div class="columns">
                         <div class="column is-one-fourth">
@@ -185,7 +186,7 @@
         <section class="page" id="RecipesPage">
             <!--<h1 style="text-align: center;">my recipes</h1>-->
             <div id="myRecipeHolder" style="text-align: center; margin-top: 10%;">no recipes yet :(</div>
-            <div class="columns">         
+            <div class="columns is-desktop">         
                 <div class="column is-one-third" id="myRecipeCol1"></div>
                 <div class="column is-one-third" id="myRecipeCol2"></div>
                 <div class="column is-one-third" id="myRecipeCol3"></div>
@@ -194,7 +195,70 @@
         </section>
 
         <section class="page" id="MenuPage">
-            3
+            <div class="container" id="menuDiv">
+                <table class="table is-fullwidth">
+                    <tbody>
+                        <tr>
+                            <th style="width: 15%;">
+                                <p style="font-size: large;">sunday</p>
+                                <br>
+                                <p style="font-weight: normal; font-size: small;"> <span id="sundayTotalCals"> 0 </span><br> total kcal</p>
+                            </th>
+                            
+                            <td id="sundayDiv"></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 15%;">
+                                <p style="font-size: large;">monday</p>
+                                <br>
+                                <p style="font-weight: normal; font-size: small;"> <span id="mondayTotalCals">0</span><br> total kcal</p>
+                            </th>
+                            <td id="mondayDiv"></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 15%;">
+                                <p style="font-size: large;">tuesday</p>
+                                <br>
+                                <p style="font-weight: normal; font-size: small;"> <span id="tuesdayTotalCals">0</span><br> total kcal</p>
+                            </th>
+                            <td id="tuesdayDiv"></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 15%;">
+                                <p style="font-size: large;">wednesday</p>
+                                <br>
+                                <p style="font-weight: normal; font-size: small;"> <span id="wednesdayTotalCals">0</span><br> total kcal</p>
+                            </th>
+                            <td id="wednesdayDiv"></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 15%;">
+                                <p style="font-size: large;">thursday</p>
+                                <br>
+                                <p style="font-weight: normal; font-size: small;"> <span id="thursdayTotalCals">0</span><br> total kcal</p>
+                            </th>
+                            <td id="thursdayDiv"></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 15%;">
+                                <p style="font-size: large;">friday</p>
+                                <br>
+                                <p style="font-weight: normal; font-size: small;"> <span id="fridayTotalCals">0</span><br> total kcal</p>
+                            </th>
+                            <td id="fridayDiv"></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 15%;">
+                                <p style="font-size: large;">saturday</p>
+                                <br>
+                                <p style="font-weight: normal; font-size: small;"> <span id="saturdayTotalCals">0</span><br> total kcal</p>
+                            </th>
+                            <td id="saturdayDiv"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </section>
 
         <div class="modal modal-fx-3dFlipVertical" id="recipeModal">
@@ -219,6 +283,31 @@
                         <a class="modalButton" id="recipeURLButton" rel="noopener noreferrer" target="_blank">view full recipe</a>
                         <a class="modalButton" id="addToMyRecipesButton">add to my recipes</a>
                     </div>
+                </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+        <div class="modal modal-fx-3dFlipVertical" id="addToMenuModal">
+            <div class="modal-background"></div>
+            <div class="modal-content" style="height: 300px; width: fit-content;">
+                <div class="box" id="addToMenuModalContent">
+                    <div style="display: flex; align-items: center;">
+                        <p style="font-size: large; margin-right: 10px">choose a day:</p>
+                        <div class="select is-rounded is-normal">
+                            <select class="is-hovered" id="dayOption">
+                                <option>sunday</option>
+                                <option>monday</option>
+                                <option>tuesday</option>
+                                <option>wednesday</option>
+                                <option>thursday</option>
+                                <option>friday</option>
+                                <option>saturday</option>                      
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <a class="modalButton" id="addToMenuButton" style="display:flex; justify-content: center;">add to my menu</a>
                 </div>
             </div>
             <button class="modal-close is-large" aria-label="close"></button>
