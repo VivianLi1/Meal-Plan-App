@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>eat in</title>
+    <link rel="shortcut icon" type="image/png" href="images/logo.png">
+    <meta name="description" content="An app that helps you plan your meals for the week.">
+    <meta name="author" content="Vivian Li">
+
+    <!------------------ Stylesheets -------------------->
+    <link rel="stylesheet" href="style_about.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+
+    <!-------------------- Fonts ------------------------>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Adamina&family=Vidaloka&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+    <div class="main">
+        <div class="header"><h1>about</h1></div>
+        <div class="info">
+            <br>
+            <p>Hey! My name is Vivian and I made this app. Thanks for checking it out!</p>
+            <p>Built with: edamam API and Bulma</p>
+        </div>
+
+        <div class="feedback">
+            <br><br>
+            <p>Leave me feedback!</p><br>
+            <p>Email</p>
+            <input class="input is-small" type="email" placeholder="me@example.com" readonly>
+            <p>Comment</p>
+            <textarea class="textarea is-small" placeholder=""></textarea>
+
+            <div style="margin-top: 20px; text-align: right;">
+                <a class="infoButton">enter</a>
+            </div>
+            <div style="margin-top: 50px; text-align: center;">
+                <span class="infoButton"  onclick="transitionToPage('./index.html')">back to home</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!------------------ Scripts -------------------->
+    <script src="home.js"></script>
+    <script src="https://kit.fontawesome.com/9027e42d8e.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
+    
+</body>
+</html>

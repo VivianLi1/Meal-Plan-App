@@ -10,7 +10,7 @@
     <meta name="author" content="Vivian Li">
 
     <!------------------ Stylesheets -------------------->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_home.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
 
@@ -19,303 +19,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Adamina&family=Vidaloka&display=swap" rel="stylesheet">
     
-
 </head>
 <body>
-    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" id="homeButton">
-                <img src="images/logo.png" alt="eat in: meal planning made simple" class="logoImg">
-                <h1 class="logoText">eat in</h1>
-            </a>
-            <div class="navbar-burger" data-target="navbarMainContent" style="margin-top: 20px;">
-                <span></span>
-                <span></span>
-                <span></span>
+
+    <div class="main">
+        <div class="logoDiv">
+            <img src="images/logo-white.png" style="width:70px; height: 70px; margin-right: 20px">
+            <h1 class="logoText">eat in</h1>
+        </div>
+        <div class="infoDiv">
+            <p>meal planning made quick and easy </p>
+            <div style="margin-top: 80px;">
+                <span class="infoButton"  style="margin-right: 20px;" onclick="transitionToPage('./app.html')">go to app</span>
+                <span class="infoButton" onclick="transitionToPage('./about.html')">about</span>
             </div>
         </div>
-        <div id="navbarMainContent" class="navbar-menu">
-            <div class="navbar-end">
-                <a class="navbar-item" id="recipesButton">my recipes</a>
-                <p class="navbar-item" id="slash">/</p>
-                <a class="navbar-item" id="menuButton">my menu</a>
-            </div>
-        </div>
-    </nav>
-
-        <br>
-        <section class="page" id="HomePage">
-            <div class="container" id="searchDiv">
-                <div class="columns is-mobile">
-                    <div class="column is-four-fifths">
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input is-rounded" type="text" placeholder="search for recipes or ingredients" id="searchText">
-                            <span class="icon is-small is-right">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="column" id="searchButtonDiv">
-                        <button id="searchButton">enter</button>
-                    </div>
-                </div>
-
-                <div style="display: flex; justify-content: space-between;">
-                    
-                    <p class="checkItem"><input class="meals" type="checkbox" aria-label="Breakfast"><span>breakfast</span></p>
-                    
-                    
-                    <p class="checkItem"><input class="meals" type="checkbox" aria-label="Lunch"><span>lunch</span></p>
-                    
-                    
-                    <p class="checkItem"><input class="meals" type="checkbox" aria-label="Dinner"><span>dinner</span></p>
-                    
-                    
-                    <p class="checkItem"><input class="meals" type="checkbox" aria-label="Snack"><span>snack</span></p>
-                    
-                    
-                    <div>
-                        <button id="filterButton">
-                            <i class="fas fa-chevron-down down-caret"></i>
-                            <span id="currFilterSelection">more filters</span>
-                        </button>
-                        <ul class="dropdown-menu2">
-                            <li class="filterItem" id="filterRestrictionsButton"><a>restrictions</a></li>
-                            <li class="filterItem" id="filterDietsButton"><a>diets</a></li>
-                            <li class="filterItem" id="filterCuisinesButton"><a>cuisines</a></li>
-                        </ul>
-                    </div>
-                    
-                </div>
-                <br>
-                <div id="filterRestrictions">
-                    <div class="columns">
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="alcohol-free"><span>alcohol-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="celery-free"><span>celery-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="dairy-free"><span>dairy-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="egg-free"><span>egg-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="fish-free"><span>fish-free</span></p>
-                        </div>
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="gluten-free"><span>gluten-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="lupine-free"><span>lupine-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="mollusk-free"><span>mollusk-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="mustard-free"><span>mustard-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="peanut-free"><span>peanut-free</span></p>
-                        </div> 
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="pork-free"><span>pork-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="red-meat-free"><span>red-meat-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="shellfish-free"><span>shellfish-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="soy-free"><span>soy-free</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="sulfite-free"><span>sulfite-free</span></p>
-                        </div> 
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="low-potassium"><span>low potassium</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="low-sugar"><span>low sugar</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="No-oil-added"><span>no oil added</span></p>
-                        </div> 
-                    </div>  
-                </div>
-
-                <div id="filterDiets">
-                    <div class="columns">
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="immuno-supportive"><span>immuno-supportive</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="keto-friendly"><span>keto</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="kidney-friendly"><span>kidney-friendly</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="kosher"><span>kosher</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="Mediterranean"><span>mediterranean</span></p>
-                        </div>
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="paleo"><span>paleo</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="pescatarian"><span>pescatarian</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="vegan"><span>vegan</span></p>
-                            <p class="checkItem"><input class="restrictions" type="checkbox" aria-label="vegetarian"><span>vegetarian</span></p>
-                        </div>
-                        <div class="column is-one-fourth"></div> 
-                        <div class="column is-one-fourth"></div> 
-                    </div>  
-                </div>
-
-                <div id="filterCuisines">
-                    <div class="columns">
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="American"><span>American</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Asian"><span>Asian</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="British"><span>British</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Caribbean"><span>Caribbean</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Central Europe"><span>Central Europe</span></p>
-                        </div>
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Chinese"><span>Chinese</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Eastern Europe"><span>Eastern Europe</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="French"><span>French</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Indian"><span>Indian</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Italian"><span>Italian</span></p>
-                        </div> 
-                        <div class="column is-one-fourth">
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Japanese"><span>Japanese</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Mexican"><span>Mexican</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Middle Eastern"><span>Middle Eastern</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="Nordic"><span>Nordic</span></p>
-                            <p class="checkItem"><input class="cuisines" type="checkbox" aria-label="South American"><span>South American</span></p>
-                        </div> 
-                        <div class="column is-one-fourth">
-                        </div> 
-                    </div>  
-                </div>
-            </div>
-
-            <br>
-            <div id="resultsDiv">
-                <div class="columns">
-                    <div class="column is-one-third" id="recipeCol1"></div>
-                    <div class="column is-one-third" id="recipeCol2"></div>
-                    <div class="column is-one-third" id="recipeCol3"></div>
-                </div>
-                <div class="container" id="loadMore" style="text-align: center; display: none;">
-                    <a><p>load more</p></a>
-                </div>
-                
-            </div>
-
-        </section>
-
-        <section class="page" id="RecipesPage">
-            <!--<h1 style="text-align: center;">my recipes</h1>-->
-            <div id="myRecipeHolder" style="text-align: center; margin-top: 10%;">no recipes yet :(</div>
-            <div class="columns is-desktop">         
-                <div class="column is-one-third" id="myRecipeCol1"></div>
-                <div class="column is-one-third" id="myRecipeCol2"></div>
-                <div class="column is-one-third" id="myRecipeCol3"></div>
-            </div>
-            
-        </section>
-
-        <section class="page" id="MenuPage">
-            <div class="container" id="menuDiv">
-                <table class="table is-fullwidth">
-                    <tbody>
-                        <tr>
-                            <th style="width: 15%;">
-                                <p style="font-size: large;">sunday</p>
-                                <br>
-                                <p style="font-weight: normal; font-size: small;"> <span id="sundayTotalCals"> 0 </span><br> total kcal</p>
-                            </th>
-                            
-                            <td id="sundayDiv"></td>
-                        </tr>
-                        <tr>
-                            <th style="width: 15%;">
-                                <p style="font-size: large;">monday</p>
-                                <br>
-                                <p style="font-weight: normal; font-size: small;"> <span id="mondayTotalCals">0</span><br> total kcal</p>
-                            </th>
-                            <td id="mondayDiv"></td>
-                        </tr>
-                        <tr>
-                            <th style="width: 15%;">
-                                <p style="font-size: large;">tuesday</p>
-                                <br>
-                                <p style="font-weight: normal; font-size: small;"> <span id="tuesdayTotalCals">0</span><br> total kcal</p>
-                            </th>
-                            <td id="tuesdayDiv"></td>
-                        </tr>
-                        <tr>
-                            <th style="width: 15%;">
-                                <p style="font-size: large;">wednesday</p>
-                                <br>
-                                <p style="font-weight: normal; font-size: small;"> <span id="wednesdayTotalCals">0</span><br> total kcal</p>
-                            </th>
-                            <td id="wednesdayDiv"></td>
-                        </tr>
-                        <tr>
-                            <th style="width: 15%;">
-                                <p style="font-size: large;">thursday</p>
-                                <br>
-                                <p style="font-weight: normal; font-size: small;"> <span id="thursdayTotalCals">0</span><br> total kcal</p>
-                            </th>
-                            <td id="thursdayDiv"></td>
-                        </tr>
-                        <tr>
-                            <th style="width: 15%;">
-                                <p style="font-size: large;">friday</p>
-                                <br>
-                                <p style="font-weight: normal; font-size: small;"> <span id="fridayTotalCals">0</span><br> total kcal</p>
-                            </th>
-                            <td id="fridayDiv"></td>
-                        </tr>
-                        <tr>
-                            <th style="width: 15%;">
-                                <p style="font-size: large;">saturday</p>
-                                <br>
-                                <p style="font-weight: normal; font-size: small;"> <span id="saturdayTotalCals">0</span><br> total kcal</p>
-                            </th>
-                            <td id="saturdayDiv"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </section>
-
-        <div class="modal modal-fx-3dFlipVertical" id="recipeModal">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="box" id="recipeModalContent" style="padding: 40px;">
-                    <div class="columns is-mobile">
-                        <div class="column is-one-third">
-                            <img id="currRecipeImg" style="border-radius: 5px;">
-                        </div>
-                        <div class="column is-two-thirds" style="position: relative;">
-                            <h1 id="currRecipeName" style="font-size: 18px;"></h1>
-                            <div style="position: absolute; bottom: 10%; color: rgba(0, 0, 0, 0.678);">
-                                <p><span id="currRecipeCals"></span> kcal/serving</p>
-                                <p id="currRecipeCuisine"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="currRecipeIngredients"></div>
-                    <br><br>
-                    <div style="display:flex; text-align: center; justify-content: space-evenly;">
-                        <a class="modalButton" id="recipeURLButton" rel="noopener noreferrer" target="_blank">view full recipe</a>
-                        <a class="modalButton" id="addToMyRecipesButton">add to my recipes</a>
-                    </div>
-                </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close"></button>
-        </div>
-
-        <div class="modal modal-fx-3dFlipVertical" id="addToMenuModal">
-            <div class="modal-background"></div>
-            <div class="modal-content" style="height: 300px; width: fit-content;">
-                <div class="box" id="addToMenuModalContent">
-                    <div style="display: flex; align-items: center;">
-                        <p style="font-size: large; margin-right: 10px">choose a day:</p>
-                        <div class="select is-rounded is-normal">
-                            <select class="is-hovered" id="dayOption">
-                                <option>sunday</option>
-                                <option>monday</option>
-                                <option>tuesday</option>
-                                <option>wednesday</option>
-                                <option>thursday</option>
-                                <option>friday</option>
-                                <option>saturday</option>                      
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-                    <a class="modalButton" id="addToMenuButton" style="display:flex; justify-content: center;">add to my menu</a>
-                </div>
-            </div>
-            <button class="modal-close is-large" aria-label="close"></button>
-        </div>
-   
+    </div>
+    
 
     <!------------------ Scripts -------------------->
-    <script src="app.js"></script>
+    <script src="home.js"></script>
     <script src="https://kit.fontawesome.com/9027e42d8e.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
 

@@ -7,12 +7,16 @@ let fetchedRecipes = [];
 let myRecipes = [];
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('body').style.opacity = 1;
     addNavBarBurgerItems();
     addPageNav();
     addFilterMenuButtonListener();
     addFilterButtonsListeners();
     document.getElementById("searchButton").addEventListener("click", ()=>{
         closeFilters();
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("loadMore").style.display = "none";
+
         document.getElementById("recipeCol1").innerText = "";
         document.getElementById("recipeCol2").innerText = "";
         document.getElementById("recipeCol3").innerText = "";
@@ -23,6 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     //testRecipes();
 });
+
+window.transitionToPage = function(href) {
+    document.querySelector('body').style.opacity = 0
+    setTimeout(function() { 
+        window.location.href = href
+    }, 700)
+}
 
 function addNavBarBurgerItems(){
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -47,11 +58,12 @@ function addNavBarBurgerItems(){
         
         const mediaQueryList = window.matchMedia(mediaQuery);
         mediaQueryList.addEventListener('change', event => {
-            let slash = document.getElementById("slash");
+            let slashes = Array.from(document.getElementsByClassName("slash"));
+            console.log(slashes)
             if (event.matches) {
-                slash.style.display = "none";
+                slashes.forEach(x => x.style.display = "none");
             } else {
-                slash.style.display = "";
+                slashes.forEach(x => x.style.display = "");
             }
         });
     }
@@ -62,19 +74,19 @@ function addPageNav(){
     let recipes = document.getElementById("RecipesPage");
     let menu = document.getElementById("MenuPage");
 
-    document.getElementById("homeButton").addEventListener("click", () =>{
+    document.getElementById("searchPageButton").addEventListener("click", () =>{
         recipes.style.display = "none";
         menu.style.display = "none";
         home.style.display = "block";
     });
 
-    document.getElementById("recipesButton").addEventListener("click", () =>{
+    document.getElementById("recipesPageButton").addEventListener("click", () =>{
         recipes.style.display = "block";
         menu.style.display = "none";
         home.style.display = "none";
     });
 
-    document.getElementById("menuButton").addEventListener("click", () =>{
+    document.getElementById("menuPageButton").addEventListener("click", () =>{
         recipes.style.display = "none";
         menu.style.display = "block";
         home.style.display = "none";
@@ -180,6 +192,7 @@ function getRecipes(url){
     })
     .then(response => response.json())
     .then(data => {
+        document.getElementById("loader").style.display = "none";
 
         let currRecipes = data.hits;
         fetchedRecipes = fetchedRecipes.concat(currRecipes);
@@ -370,7 +383,7 @@ function displayMyRecipe(name, calPerServing, imageURL, cuisineType, ingredients
 
     let myRecipeDivHeader = document.createElement("div");
     myRecipeDivHeader.className = "columns is-mobile";
-    myRecipeDivHeader.style.marginBottom = "8%";
+    myRecipeDivHeader.style.marginBottom = "6%";
     //name
     let myRecipeNameDiv = document.createElement("div");
     myRecipeNameDiv.className = "column is-7";
