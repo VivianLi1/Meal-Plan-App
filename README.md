@@ -27,4 +27,5 @@ Live site: https://vivianli1.github.io/Meal-Plan-App/
 
 ## Author
 Github: [@VivianLi1](https://github.com/VivianLi1)
+
 LinkedIn: [Vivian Li](https://www.linkedin.com/in/vivian-li-39188b171/)
