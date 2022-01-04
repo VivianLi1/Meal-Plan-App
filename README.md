@@ -1,5 +1,5 @@
 # ![logo](./images/logo-small.png) eat in: meal planning made simple
-eat in is an app that allows you to search for recipes and plan your meals. Powered by the [edamame API](https://www.edamam.com/). 
+eat in is an app that allows you to search for recipes and plan your meals. Powered by the [edamam API](https://www.edamam.com/). 
 
 Live site: https://vivianli1.github.io/Meal-Plan-App/
 
@@ -16,7 +16,7 @@ Live site: https://vivianli1.github.io/Meal-Plan-App/
 ![ss3](./images/screenshots/ss3.png)
 
 ## Built with
-- [edamame API](https://www.edamam.com/)
+- [edamam API](https://www.edamam.com/)
 - [Bulma](https://bulma.io/)
 
 ## Future Development Goals
