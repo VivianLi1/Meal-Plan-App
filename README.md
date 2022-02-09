@@ -24,6 +24,7 @@ Live site: https://vivianli1.github.io/Meal-Plan-App/
   - save user recipes/menus to database
 - More filter options
 - Ability to print/email menu 
+- Delete button for menu/meal plan sections
 
 ## Author
 Github: [@VivianLi1](https://github.com/VivianLi1)
